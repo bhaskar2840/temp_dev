@@ -1,7 +1,7 @@
 import  { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import './tailwind.css'; // Import Tailwind CSS file
+
 
 const NavigationBar = () => {
   const [destination, setDestination] = useState('');
