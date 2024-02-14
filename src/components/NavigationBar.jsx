@@ -14,7 +14,7 @@ const NavigationBar = () => {
   const [showGuestDropdown, setShowGuestDropdown] = useState(false);
 
   // Local list of suggestions
-  const localSuggestions = ['New York', 'Los Angeles', 'London', 'Paris', 'Tokyo'];
+  const localSuggestions = ['New York', 'Los Angeles', 'London', 'Paris', 'Tokyo','Delhi','Patna','Jaipur'];
 
   const handleDestinationChange = (event) => {
     const value = event.target.value;
@@ -45,23 +45,26 @@ const NavigationBar = () => {
   maxDate.setFullYear(today.getFullYear() + 1);
 
   return (
-    <div className="flex justify-around items-center p-4 bg-gray-100">
+    <div className="flex justify-around items-center p-4 bg-gray-100 relative">
+    <div>
       <input
         type="text"
         placeholder="Destination"
         value={destination}
         onChange={handleDestinationChange}
-        className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-500"
+        className="border border-gray-100 rounded-md py-2 px-4 focus:outline-none focus:border-blue-500"
       />
       {suggestions.length > 0 && (
-        <ul className="absolute bg-white border border-gray-300 rounded-md mt-1 w-full">
+        <ul className="absolute bg-white border border-gray-300 rounded-md mt-1 w-40 left-0">
           {suggestions.map((suggestion, index) => (
-            <li key={index} className="cursor-pointer p-2 hover:bg-gray-200" onClick={() => setDestination(suggestion)}>
+            <li key={index} className="cursor-pointer p-2  hover:bg-gray-400" onClick={() => { setDestination(suggestion); setSuggestions([]); }}>
               {suggestion}
             </li>
           ))}
         </ul>
       )}
+    </div>
+
       <DatePicker
         selected={checkInDate}
         onChange={(date) => setCheckInDate(date)}
